@@ -1,0 +1,227 @@
+base class -> member func|
+  derived class ->  mem func 
+
+derived class is a type of base class 
+when calling mem func we will always get base class mem thus we need to use virtual function -> vtable amintains this behaviour to come in effect
+
+also calling of destructor works the same way -> that is we need to make the baseclass destructor to virtual to have the derived calss destrucotr called or else there will be a memory leak
+
+/* vtables 
+
+-> supports dynamic dispatch 
+vtables are created when virtual functions are called and a pointer to vtable is createdIt helps in providing the true member function made for a particular class
+
+/* Interfaces
+
+
+1.Const : correctness
+read only ( "immutable ")
+read only parameter;
+making all of the member variable in a member function read only 
+constexpr -> change value at time of compilation
+/* is_cosnt() 
+is_cosnt_v<
+
+2.Block scope 
+scope -> { "var is availbe in this only " }
+imp -> we can reclaim memory if  a var is not used 
+
+3.arrays 
+-> DS 
+data is stroed contiguiously 
+std::iota(std::begin(ids),std::end(ids),10) ->
+decide the size of array at compile time 
+**suing std::Array is benefical since we can get error for the seg fault error 
+using .at() instead of getting value arr[x] = ?
+
+int ids[100] -> raw array
+std::array<int,100> ids ;
+
+
+/*fill() 
+std::fill(v.begin(),v.end(),-1);
+-> -1 -1 -1 -1 ....
+
+4.continue and break 
+continue will jump rgith back up to continue the iterator -> skip 
+break will jump right out the loop 
+
+5.functions 
+used to repeat work 
+newer way to define -> auto add(flaot a, float b) -> float
+
+6.Addres of operator 
+&a -> gives back the address in hexadecimal 
+if a  is stored as char then cpp will &a will not give us address 
+therfore we need to store tell its type also -> (void*) &a will give us the right ans 
+* -> which stoes the address
+similary for fucntion need to do the same 
+for clarity & is an actual function so -> &(a) will give the same ans 
+
+7.pass by value semeantics 
+make copies of our arguments when passed by value ot the function 
+will not make changes to the same var out  of the scope 
+
+8.Refrences
+int& is the whole type for refrence type 
+so .....
+int x =  4;
+int& ref  = x ; is the same thing .... :-)
+
+9.pass by Refrences 
+mutable data -> aviod making a copy 
+efficient ->  increases effeciny check it urself u stupid fuck 
+
+10.point_of_pointers
+datatype -> stors address 
+very useful if dereferencing 
+int* = creating the pointer 
+*__  == dereferecning the pointer ( manipulating value)
+
+/*illegal 
+int * y = nullptr;
+int*& ref2  = y ;
+
+11.dynamic_memeory allocation -> heap 
+object life time is not limited tot the scope that they were created with 
+int* x = new int; -> allocating var space 
+we need tot use new and delete in the same scope 
+*allows us to allocate resources at runtime 
+*resoucres are retunered to us in a pointer 
+
+12.pointer_arithematic
+incrementing a pointer menas moving its size by a data_Type 
+*(px + i) -> dereferencing at ith location of array 
+
+13.sizeof() operator 
+go to code 
+
+14.array decay to pointer 
+param  => const std::vector<int>& arr 
+
+15.function pointer
+std::fucntion<int(int,int)> op; -> funciton ptr 
+
+16.lvalue,rvalue 
+lvalue -> some with a memory location 
+lvaue reference -> it is a refrence_type variable which points to something with 
+memory , eg : int& ref = i ; it cant be pointed towards r_value unless it 
+is defiend with const (in which case their is implicaite delcartion of temp variable)
+rvalue -> on rhs of an assignment ,does not point anywhere
+r_value reference -> int&& ref = 10 works 
+
+17. std::move 
+transferring ownership / stealing resources 
+avoid making copies 
+go to code for demo 
+if we just use str1 =str2 then each character of string 2 will be copied to str1
+which is using the copy assignment but in mordern cpp the std::move helps us to move 
+ownership of str2 to str1 
+under the hood , we are using move operator with the return rvalue reference 
+
+18.uniaue ptr
+now raw pointer provide sharing -> room for errors (deallocation of memory)
+there could be memory leaks also
+while uisng smart pointer takes care of deallocation by itself 
+go to code 
+with unique_ptr we cannot share (no copies allowed ) 
+deletes in the blockscope
+copy is not allowed but we can move ownership
+
+19.shared ptr 
+retian shared ownership -> only resource can have many ptr
+resouce is only deleted if the last ptr gets destroyed 
+each resouce is keeping a reference counter -> use_count() .ref count is thread safe 
+make_shared() similar to make_unique()
+
+20.weak ptr
+non-owning ptr -> ref count is not increased 
+"safer way to have dangling ptr " 
+"break cycle "
+expired() useful for checking if object is deleted 
+
+21.classes 
+class is a User defeined type 
+we can perform information hidding 
+if we call class object on stack destructor is called auto 
+while on heap it needs to be deallocated 
+->abiltiy to create instances of object and "think" in objects in our sfotware 
+->while defeining hpp and cpp we need to use class scope to define free fucntion to 
+a particular class 
+
+22.default class funciton
+default constructor and destructor are provided which helps us allocate object 
+but if we want to make a custom constructor we can by adding the appropriate fucniton name ans defeining
+the function in implementation 
+go to code 
+
+23.copy constructor and copy assignment
+copy assingment operator -> "="
+cpp gives us a "free" copy constructor and copy assignmentoperator 
+but it does a shallow copy 
+only a pointer is copied to the data we are not getting new memory for the new data 
+thus we get the err:: double free detected 
+
+24.Rule of three  
+25.avoiding copies 
+
+26.operator overloading 
+
+
+
+/*constructor 
+non-static member function of a class 
+--> class-name ( parameter -list )
+
+/* intializer_list 
+vector v() -> constructor
+vector v{1,2,3} -> intializer_list
+
+/* zero initializization using struct Entity {} -> initializes memebervariables of the clas to 0;
+only if default constructor is called / else using manual constructor need to insitalzize
+--> also entity  = default can alos intiialize zero 
+
+/*delgating constructor 
+name of class appears in the member intializer list -> then it must conatain only one memeber insitailzer 
+-> such const is known as member instiailizer
+
+/*functional try-block
+
+
+
+/*class data layout
+--> largest data type to shortest data type alignment 
+
+/* pointer implemnetation( Pimpl)
+is a C++ programming technique that removes implementation details of a class from
+its object representation by placing them in a separate class, accessed through
+an opaque pointer: 
+->The C++ programming technique you are referring to is called the Pimpl idiom 
+(short for "Pointer to Implementation"). It is used to hide the implementation 
+details of a class from its users by utilizing a separate class that is accessed 
+through an opaque pointer. This helps to decouple the public interface of a class 
+from its internal implementation, providing better encapsulation and information 
+hiding.
+
+
+/* this keyword
+--> this is a pointer to the current instance of the object 
+/*Static member variables explaination
+->A static member variable is a variable that belongs to the class itself rather 
+than an instance of the class. It is shared among all instances of the class. 
+In other words, all objects of the class will have the same value for the static 
+member variable.
+
+/* Static member funciton 
+--> static varibles in a classs exists outside a class 
+can be allocated even if class instance is not called 
+
+/*Template entity may be used for defieing a family of functions.
+they are parametrized by one or nore template parameters 
+
+/*CTAD => helps in writing cleaner code 
+
+/* Union only holds the largest type that is sizeof(max(member fields...))
+-> helps in memory obtimization 
+->  similar to class or struct but cannot have virtual functions
+/base class  or have non-static data members

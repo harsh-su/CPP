@@ -1,0 +1,24 @@
+we need to first compile suing g++ -g ... to generate source file for gbd 
+now we can eiher use gbd ./prog or we can use gbt--tui ./prog 
+
+commnads 
+-> next  will take us to the succesive breakpoints 
+-> step will take us into the implementation of the function 
+-> break will stop ata the point 
+-> list will show the the next ten line 
+-> print can show us the value of the vairable at the time ( really helpful during segmentation faults )
+    also shows us the field and gvie us type 
+-> up to go up the stack of a running program ( after attaching gbd to a process)
+-> using target we can know store the value with time 
+    calling reverse will take us back ..
+->for polymorphism 
+    whatis ___ to know object 
+    info vbtl ___ to know how an object is behaving 
+
+
+
+can also use -Wall and -Wextra to show some extra flags at compile time 
+
+
+Pointer pitfalls 
+if px is pointed to nullptr then dereferencing it will cause SEGFAULT
