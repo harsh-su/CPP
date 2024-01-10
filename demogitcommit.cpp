@@ -1,1 +1,1 @@
-harsh is adding a new file to a repo
+harsh is deleting a new file to a repo
