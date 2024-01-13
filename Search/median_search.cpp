@@ -4,7 +4,7 @@
 #include<vector>
 
 /*
-median of median is an approximate median selection aglorithm frequtnly used as a good qivot for an exact selection algorithm most commoly quicksort -
+median of median is an approximate median selection aglorithm frequtnly used as a good pivot for an exact selection algorithm most commoly quicksort -
 ->O(n) time 
 quicksort -> slects kth smallest element of an initally unsorted array 
 */
