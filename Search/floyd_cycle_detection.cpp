@@ -25,13 +25,19 @@ int32_t duplicate_num(const std::vector<T> &in_arr,const uint32_t &n){
     uint32_t hare  = in_arr[0];
 
     do {
+        std::cout << tortoise << hare << std::endl;
         tortoise = in_arr[tortoise];
         hare = in_arr[in_arr[hare]];
     }while(tortoise !=hare);
 
     tortoise = in_arr[0];
 
+    std:: cout << "found tortoise ! hare " << std::endl;
+
     while(tortoise != hare){
+        
+        std::cout << tortoise << hare << std::endl;
+    
         tortoise = in_arr[tortoise];
         hare  = in_arr[hare];
     }

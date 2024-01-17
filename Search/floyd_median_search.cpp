@@ -25,11 +25,89 @@
 #include<cassert>
 #include<iostream>
 
-struct Listnode {
+//definition for singly-linked list 
+
+struct ListNode {
     int val{0};
-    Listnode * next{nullptr};
-    Listnode() = default;
-    explicit Listnode(int x) : val(x) {}
-    Listnode(int x,Listnode * next) : val(x),next(next){}
-    
+    ListNode * next{nullptr};
+    ListNode() = default;
+    explicit ListNode(int x) : val(x) {}
+    ListNode(int x,ListNode * next) : val(x),next(next){}
+
+};
+//functiont o seach for the median of linked list 
+ListNode* middleNode(ListNode* head){
+    if (!head){
+        return nullptr;
+    }
+
+    ListNode* fastptr = nullptr;
+    ListNode* slowptr = fastptr = head;
+
+    while(fastptr->next && fastptr->next->next){
+
+        std::cout << slowptr->val << fastptr->val << std::endl;
+        slowptr = slowptr->next;
+        fastptr = fastptr->next->next;
+    }
+
+    return (fastptr->next) ? slowptr->next :slowptr;
+}
+
+static void test() {
+    auto* head1 = new ListNode;
+    head1->val = 1;
+
+    ListNode* temp = head1;
+    for (int i = 2; i < 6; ++i) {
+        // Allocate next
+        auto* temp1 = new ListNode;
+        temp1->val = i;
+
+        // Advance
+        temp->next = temp1;
+        temp = temp1;
+    }
+    temp->next = nullptr;
+
+    ListNode* median = middleNode(head1);
+    assert(3 == median->val);  // 3 is the value of the median node.
+    std::cout << "test case:1 passed\n";
+
+    // Test case # 2
+    auto* head2 = new ListNode;
+    head2->val = 1;
+
+    ListNode* temp2 = head2;
+    for (int i = 2; i < 7; ++i) {
+        // Allocate next
+        auto* temp3 = new ListNode;
+        temp3->val = i;
+
+        // Advance
+        temp2->next = temp3;
+        temp2 = temp3;
+    }
+    temp2->next = nullptr;
+
+    ListNode* median1 = middleNode(head2);
+    assert(4 == median1->val);  // 4 is the value of the median node.
+    std::cout << "test case:2 passed\n";
+
+    delete head1;
+    delete temp;
+
+    delete head2;
+    delete temp2;
+
+    std::cout << "--All tests passed--\n";
+}
+
+/**
+ * @brief Main function
+ * @returns 0 on exit
+ */
+int main() {
+    test();  // run self-test implementations
+    return 0;
 }
