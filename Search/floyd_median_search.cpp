@@ -35,6 +35,7 @@ struct ListNode {
     ListNode(int x,ListNode * next) : val(x),next(next){}
 
 };
+
 //functiont o seach for the median of linked list 
 ListNode* middleNode(ListNode* head){
     if (!head){

@@ -21,6 +21,8 @@
  *  of the first list with the first element of the second list.
  *  * If the two values don't match, it goes to the next element of the
  *  second list. It does this until the two values match.
+ * 
+ * checks for consequent elemnt in the list 
  *
  * @author [Nitin Sharma](https://github.com/foo290)
  */
@@ -103,19 +105,19 @@ bool sublist_search(ListNode* sublist, ListNode*mainlist){
 
 int main() {
     // Example usage: Creating a linked list from an array
-    std::vector<int> values = {1, 2, 3, 4, 5};
-    ListNode *head = new ListNode(values);
+    std::vector<int> mainlistData = { 2, 5, 6, 7, 8};  ///< Main list in which sublist is to be searched
+    std::vector<int> sublistData = {6, 7};  ///< Sublist to be searched
 
-    // Print the linked list
-    printLinkedList(head);
+    ListNode* main_ll = new ListNode(mainlistData);
+    ListNode* sub_ll = new ListNode(sublistData);
 
-    // Clean up memory (free the linked list)
-    while (head) {
-        ListNode *temp = head;
-        head = head->next;
-        delete temp;
+    bool exists = sublist_search(sub_ll,main_ll);
+
+    if (exists) {
+        std::cout << "[TRUE] - sublist found in main list\n";
+    } else {
+        std::cout << "[FALSE] - sublist NOT found in main list\n";
     }
-
     return 0;
 }
 
