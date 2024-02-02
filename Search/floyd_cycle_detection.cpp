@@ -16,13 +16,13 @@
 #include<vector>
 
 template <typename T>
-int32_t duplicate_num(const std::vector<T> &in_arr,const uint32_t &n){
+int32_t duplicate_num(const std::vector<T> &in_arr,const u_int32_t &n){
     if (n==0 || n==1){
         return -1;
     }
 
-    uint32_t tortoise  = in_arr[0];
-    uint32_t hare  = in_arr[0];
+    int32_t tortoise  = in_arr[0];
+    int32_t hare = in_arr[0];
 
     do {
         std::cout << tortoise << hare << std::endl;
@@ -47,7 +47,7 @@ int32_t duplicate_num(const std::vector<T> &in_arr,const uint32_t &n){
 }
 
 int main(){
-    std::vector<uint32_t> array1 = {3, 4, 8, 5, 9, 1, 2, 6, 7, 4};
+    std::vector<u_int32_t> array1 = {3, 4, 8, 5, 9, 1, 2, 6, 7, 4};
     std::cout << "Test 1... ";
     assert(duplicate_num(array1, array1.size()) ==
            4 );  // here the duplicate number is 4
