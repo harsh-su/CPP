@@ -41,7 +41,7 @@ void merge(std::vector<int>& arr, int l, int m, int r) {
         }
         k++;
     }
-
+    
     // Copy the remaining elements of L and R if any
     while (i < n1) {
         arr[k] = L[i];
