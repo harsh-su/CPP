@@ -31,8 +31,13 @@ imp -> we can reclaim memory if  a var is not used
 data is stroed contiguiously 
 std::iota(std::begin(ids),std::end(ids),10) ->
 decide the size of array at compile time 
-**suing std::Array is benefical since we can get error for the seg fault error 
+**using std::Array is benefical since we can get error for the seg fault error 
 using .at() instead of getting value arr[x] = ?
+using raw arrays such as int arr[] if we provide funciton pointer to this array the the array will desipate to just pointer 
+hence we are unable to get array size .
+
+-> we can use represent each value of array as an index to a node -> hence while finding duplicates we can imagnine the 
+ node being visited twice
 
 int ids[100] -> raw array
 std::array<int,100> ids ;
@@ -225,3 +230,10 @@ they are parametrized by one or nore template parameters
 -> helps in memory obtimization 
 ->  similar to class or struct but cannot have virtual functions
 /base class  or have non-static data members
+/* Using Unordered_map is better to store frequncy of an array of elemnts 
+-> also if we take the Unordered_set of those frequncy we might be able to find unique occurence by comparing the size of 
+-> the two 
+
+## STL : algorithms 
+
+
